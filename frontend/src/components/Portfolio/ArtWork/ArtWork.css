@@ -1,0 +1,149 @@
+/* PC (peste 1024px) - stilurile de bază rămân neschimbate */
+.artwork-details {
+  display: flex;
+  padding: 2rem;
+  height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.artwork-image-container {
+  flex: 1;
+  padding-right: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.artwork-image {
+  width: auto;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.05),
+    0 1px 4px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease;
+}
+
+.artwork-image:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+/* Tableta (768px - 1024px) */
+@media (max-width: 1024px) {
+  .artwork-details {
+    padding: 1.5rem;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .artwork-image-container {
+    padding-right: 1.5rem;
+  }
+
+  .artwork-image {
+    height: 500px;
+  }
+
+  .artwork-details-container {
+    height: 500px;
+  }
+
+  .artwork-title {
+    font-size: 1.8rem;
+  }
+
+  .artwork-description {
+    font-size: 1.1rem;
+  }
+
+  .artwork-text {
+    margin-left: 30px;
+  }
+}
+
+/* Telefon (sub 768px) */
+@media (max-width: 768px) {
+  .artwork-details {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .artwork-image-container {
+    padding-right: 0;
+  }
+
+  .artwork-image {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+  }
+
+  .artwork-details-container {
+    height: auto;
+    padding: 1.5rem;
+    min-height: 300px;
+  }
+
+  .artwork-title {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .artwork-description {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .artwork-date,
+  .artwork-artist,
+  .artwork-concept {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .artwork-text {
+    margin-left: 20px;
+  }
+}
+
+/* Telefon mic (sub 480px) */
+@media (max-width: 480px) {
+  .artwork-details {
+    padding: 0.8rem;
+    gap: 1rem;
+  }
+
+  .artwork-image {
+    max-height: 500px;
+    border-radius: 8px;
+  }
+
+  .artwork-details-container {
+    padding: 1rem;
+    border-radius: 6px;
+  }
+
+  .artwork-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .artwork-description {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .artwork-date,
+  .artwork-artist,
+  .artwork-concept {
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .artwork-text {
+    margin-left: 15px;
+  }
+}

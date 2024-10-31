@@ -1,0 +1,84 @@
+body {
+  background-color: #fffdf8;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Adaugă asta pentru a preveni scroll-ul orizontal */
+  width: 100%;
+}
+
+button {
+  background-color: #6c4e31;
+}
+
+p {
+  color: #28282b;
+}
+
+/* Input elements */
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border: 1px solid rgba(108, 78, 49, 0.15);
+  border-radius: 4px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+  color: #28282b;
+  font-family: inherit;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #6c4e31;
+  box-shadow: 0 0 0 2px rgba(108, 78, 49, 0.1);
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: rgba(108, 78, 49, 0.3);
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+/* Button element */
+button {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  background-color: #6c4e31;
+  color: white;
+}
+
+button:hover {
+  background-color: #5a4129;
+}
+
+button.secondary {
+  background-color: transparent;
+  border: 1px solid #6c4e31;
+  color: #6c4e31;
+}
+
+button.secondary:hover {
+  background-color: rgba(108, 78, 49, 0.1);
+}

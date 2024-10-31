@@ -1,0 +1,167 @@
+.portfolio-list {
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.portfolio-title {
+  font-size: 2.5rem;
+  color: #6c4e31;
+  margin-bottom: 1.5rem;
+}
+
+/* PC Mare (peste 1200px) */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin: 0 auto;
+  justify-items: center;
+  padding: 0 1rem;
+  max-width: 1400px;
+}
+
+/* PC Normal și Tableta Mare (992px - 1200px) */
+@media (max-width: 1200px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+}
+
+/* Tableta (768px - 991px) */
+@media (max-width: 991px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0 0.8rem;
+  }
+}
+
+/* Telefon (sub 768px) */
+@media (max-width: 767px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
+}
+
+.portfolio-item {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  height: 500px;
+  width: 300px;
+  opacity: 0; /* Ascundem inițial elementele */
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.portfolio-image {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease; /* Smooth scaling effect */
+}
+
+.portfolio-item:hover .portfolio-image {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.portfolio-item h2 {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.upload-status {
+  font-size: 0.9rem;
+  margin-top: 0.8rem;
+}
+
+/* Componenta Upload */
+.upload-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+@media (max-width: 768px) {
+  .upload-container {
+    max-width: 90%;
+    margin: 1.5rem auto;
+  }
+}
+
+/* Animații */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Delay-uri pentru animații */
+@media (min-width: 769px) {
+  .portfolio-item:nth-child(1) {
+    animation-delay: 0.3s;
+  }
+  .portfolio-item:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+  .portfolio-item:nth-child(3) {
+    animation-delay: 0.7s;
+  }
+  .portfolio-item:nth-child(4) {
+    animation-delay: 0.9s;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-item:nth-child(1) {
+    animation-delay: 0.2s;
+  }
+  .portfolio-item:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+  .portfolio-item:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+  .portfolio-item:nth-child(4) {
+    animation-delay: 0.8s;
+  }
+}
+
+/* Asigură-te că elementele din grid sunt responsive */
+.portfolio-item {
+  width: 100%;
+  max-width: 300px;
+}
+
+@media (max-width: 480px) {
+  .portfolio-item {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,145 @@
+/* PC Mare (peste 1200px) */
+.user-art-gallery {
+  padding: 3rem;
+  text-align: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.user-art-gallery h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.art-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  padding: 1rem;
+}
+
+/* PC Normal (992px - 1200px) */
+@media (max-width: 1200px) {
+  .user-art-gallery {
+    padding: 2.5rem;
+  }
+
+  .art-gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .user-art-gallery h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.8rem;
+  }
+}
+
+/* Tableta (768px - 991px) */
+@media (max-width: 991px) {
+  .user-art-gallery {
+    padding: 2rem 1.5rem;
+  }
+
+  .art-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .user-art-gallery h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Telefon Mare (576px - 767px) */
+@media (max-width: 767px) {
+  .user-art-gallery {
+    padding: 1.5rem 1rem;
+  }
+
+  .art-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .user-art-gallery h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+}
+
+/* Telefon Mic (sub 576px) */
+@media (max-width: 575px) {
+  .user-art-gallery {
+    padding: 1rem 0.8rem;
+  }
+
+  .art-gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .user-art-gallery h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Optimizări pentru landscape pe mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .user-art-gallery {
+    padding: 1rem;
+  }
+
+  .art-gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .user-art-gallery h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Animații și tranziții */
+.art-gallery-grid {
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading state */
+.gallery-loading {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+/* Empty state */
+.gallery-empty {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 575px) {
+  .gallery-empty {
+    padding: 2rem;
+    font-size: 1rem;
+  }
+}

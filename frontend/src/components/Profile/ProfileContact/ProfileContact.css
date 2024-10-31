@@ -1,0 +1,225 @@
+/* Importăm stilurile pentru sidebar */
+@import "../Profile.css";
+
+/* Restul stilurilor specifice pentru contact */
+.contact-page {
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.contact-image-container {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 1.5rem;
+}
+
+.contact-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 10px rgba(108, 78, 49, 0.15);
+}
+
+.contact-header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  color: #333;
+  font-weight: normal;
+}
+
+.contact-content {
+  /* background-color: #f8f8f8; */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(108, 78, 49, 0.15);
+}
+
+.edit-button-container {
+  text-align: right;
+  margin-bottom: 1.5rem;
+}
+
+.contact-message {
+  font-size: 1.2rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(108, 78, 49, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-2px);
+}
+
+.contact-item i {
+  font-size: 1.2rem;
+  color: #6c4e31;
+  width: 24px;
+  text-align: center;
+}
+
+.contact-item a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: #6c4e31;
+}
+
+/* Stiluri pentru formularul de editare */
+.contact-edit-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.contact-field {
+  margin-bottom: 1.5rem;
+}
+
+.contact-field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.contact-input,
+.contact-textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.contact-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contact-input:focus,
+.contact-textarea:focus {
+  outline: none;
+  border-color: #6c4e31;
+  box-shadow: 0 0 0 2px rgba(108, 78, 49, 0.1);
+}
+
+.contact-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.edit-contact-btn,
+.save-contact-btn,
+.cancel-contact-btn {
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.edit-contact-btn {
+  background-color: transparent;
+  color: #666;
+  border: 1px solid #666;
+}
+
+.save-contact-btn {
+  background-color: #6c4e31;
+  color: white;
+  border: none;
+}
+
+.cancel-contact-btn {
+  background-color: #eee;
+  color: #666;
+  border: none;
+}
+
+.edit-contact-btn:hover {
+  background-color: #6c4e31;
+  border-color: #6c4e31;
+  color: white;
+}
+
+.save-contact-btn:hover {
+  background-color: #5a3f26;
+}
+
+.cancel-contact-btn:hover {
+  background-color: #ddd;
+}
+
+.placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .contact-page {
+    padding: 1rem;
+  }
+
+  .contact-image-container {
+    width: 150px;
+    height: 150px;
+  }
+
+  .contact-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .contact-content {
+    padding: 1.5rem;
+  }
+
+  .contact-message {
+    font-size: 1rem;
+  }
+
+  .contact-actions {
+    flex-direction: column;
+  }
+
+  .edit-contact-btn,
+  .save-contact-btn,
+  .cancel-contact-btn {
+    width: 100%;
+  }
+}

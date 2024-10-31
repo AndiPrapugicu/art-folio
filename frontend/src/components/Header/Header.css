@@ -1,0 +1,394 @@
+/* Header Style */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  color: #28282b;
+  width: 100vw;
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  border-bottom: 1px solid rgba(108, 78, 49, 0.15);
+}
+
+/* Logo Styles */
+.logo {
+  height: 2em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo a {
+  color: #6c4e31;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+/* Stiluri pentru dropdown */
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  min-width: 200px;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+/* Animație pentru apariția dropdown-ului */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stilizare pentru elementele din dropdown */
+.dropdown-item {
+  padding: 0.5rem 0;
+  color: #6c4e31;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(108, 78, 49, 0.1);
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+/* Stilizare pentru butoane și link-uri din dropdown */
+.dropdown-link {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  color: #6c4e31;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px !important;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  transition: all 0.2s ease;
+  font-weight: normal !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+  padding-left: 0 !important;
+}
+
+.dropdown-link:hover {
+  background-color: rgba(108, 78, 49, 0.1);
+  color: #6c4e31;
+}
+
+.dropdown-item a,
+.dropdown-item button {
+  padding: 0.7rem 0 !important;
+  margin: 0 !important;
+}
+
+/* Stilizare pentru mesajul de welcome */
+.dropdown-item.welcome {
+  font-weight: 500;
+  color: #28282b;
+  padding: 0.5rem 1rem;
+}
+
+/* Icon și username styling */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 20px;
+  transition: background-color 0.2s ease;
+}
+
+.user-info:hover {
+  background-color: rgba(108, 78, 49, 0.1);
+  cursor: pointer;
+}
+
+.username {
+  font-size: 1.1rem;
+  color: #6c4e31;
+  font-weight: 500;
+}
+
+/* Stilizare pentru icon-ul de profil */
+.login-icon svg {
+  font-size: 1.2rem;
+  color: #6c4e31;
+}
+
+/* Navigation Link Styles */
+.nav-links a,
+.social-icons a {
+  color: #28282b;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  position: relative; /* Adăugat pentru poziționarea liniei */
+}
+
+.nav-links a {
+  margin: 0 1rem;
+  padding-bottom: 0.2rem; /* Spațiu pentru linie */
+}
+
+/* Adăugăm linia de sub link-uri */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #6c4e31;
+  transition: width 0.3s ease;
+}
+
+/* Animația la hover */
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Pentru link-ul activ (dacă folosești React Router) */
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.nav-links a:hover,
+.social-icons a:hover {
+  color: #6c4e31;
+}
+
+/* Social Icon Styles */
+.social-icons a {
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* Burger Menu */
+.burger-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .burger-menu {
+    display: block;
+    cursor: pointer;
+  }
+}
+
+/* PC (peste 1024px) - stilurile de bază rămân neschimbate */
+
+/* Tableta (768px - 1024px) */
+@media (max-width: 1024px) {
+  .header {
+    padding: 0.8rem 1.5rem;
+    height: 100px;
+  }
+
+  .logo {
+    height: 1.8em;
+    padding: 1.3em;
+  }
+
+  .logo a {
+    font-size: 1.6rem;
+  }
+
+  .nav-links a {
+    margin: 0 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .social-icons a {
+    font-size: 1.1rem;
+    margin-left: 0.4rem;
+  }
+
+  .user-info {
+    padding: 0.4rem;
+  }
+
+  .username {
+    font-size: 1rem;
+  }
+
+  .login-icon svg {
+    font-size: 1.1rem;
+  }
+}
+
+/* Telefon (sub 768px) */
+@media (max-width: 768px) {
+  .header {
+    padding: 0.6rem 1rem;
+    position: relative;
+  }
+
+  .logo {
+    height: 1.6em;
+    padding: 1.2em;
+  }
+
+  .logo a {
+    font-size: 1.4rem;
+  }
+
+  /* Stilizare pentru meniul burger */
+  .burger-menu {
+    display: block;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  /* Meniul mobil */
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    padding: 5rem 2rem 2rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    display: flex;
+    animation: slideIn 0.3s ease-out;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .nav-links a {
+    margin: 0;
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+  }
+
+  /* Ajustări pentru dropdown pe mobil */
+  .dropdown-menu {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+    padding: 1.5rem;
+    min-width: unset;
+  }
+
+  .user-info {
+    padding: 0.4rem;
+  }
+
+  .social-icons {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .social-icons a {
+    font-size: 1.3rem;
+    margin: 0;
+  }
+}
+
+/* Telefon mic (sub 480px) */
+@media (max-width: 480px) {
+  .header {
+    padding: 0.5rem;
+  }
+
+  .logo {
+    height: 1em;
+    padding: 1em;
+  }
+
+  .logo a {
+    font-size: 1.1rem;
+  }
+
+  .nav-links {
+    padding: 4rem 1rem 2rem;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+  }
+
+  .dropdown-menu {
+    padding: 1rem;
+  }
+
+  .dropdown-menu li {
+    font-size: 0.85rem;
+  }
+
+  .dropdown-menu button,
+  .dropdown-menu a {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .username {
+    font-size: 0.8rem;
+  }
+
+  .login-icon svg {
+    font-size: 1rem;
+  }
+}
+
+/* Animație pentru meniul burger */
+@keyframes menuFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

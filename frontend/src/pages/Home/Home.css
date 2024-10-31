@@ -1,0 +1,197 @@
+.home-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  border-bottom: 1px solid rgba(108, 78, 49, 0.15); /* aceeași stilizare subtilă ca în header */
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.home-left {
+  width: 50%; /* Set width to 50% */
+  padding: 2rem; /* Add padding for aesthetics */
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center content vertically */
+  /* background-color: #222; */
+  color: #28282b; /* Optional: Text color */
+}
+
+.home-left h1 {
+  font-size: 2.5rem; /* Adjust as needed */
+  color: #6c4e31;
+  margin-bottom: 0.5rem; /* Space below title */
+}
+
+.home-left p {
+  margin: 0.5rem 0; /* Space between paragraphs */
+  font-size: 1.2rem; /* Adjust as needed */
+}
+
+.publish-button {
+  background-color: #6c4e31;
+  color: #fff;
+  width: 250px;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.publish-button:hover {
+  background-color: #68421d; /* Darker shade for hover effect */
+}
+
+.home-right {
+  width: 50%; /* Set width to 50% */
+  height: 100vh; /* Full viewport height */
+  display: flex; /* Use flex to control the image */
+  align-items: center; /* Center the image vertically */
+  justify-content: center; /* Center the image horizontally */
+  overflow: hidden; /* Ensure no overflow */
+}
+
+.art-image {
+  width: 100%; /* Make image responsive */
+  height: 100%; /* Set height to 100% of the container */
+  object-fit: cover; /* Cover the area without stretching */
+  border-radius: 10px; /* Optional: Rounded corners */
+}
+
+.art-gallery-section {
+  padding: 2rem; /* Add padding for aesthetics */
+  /* background-color: #f4f4f4;  */
+  display: flex; /* Optional: flex container */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center content horizontally */
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  padding: 20px 0;
+}
+
+.pagination-button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-button:hover {
+  background-color: #6b441f;
+}
+
+.pagination-button.active {
+  background-color: #6c4e31;
+  font-weight: bold;
+}
+
+.art-gallery-section {
+  min-height: 800px; /* Asigură o înălțime minimă pentru a evita sărituri în layout */
+}
+
+/* Adăugăm media queries pentru dispozitive mobile */
+@media screen and (max-width: 768px) {
+  .home-container {
+    flex-direction: column;
+    height: auto;
+    justify-content: center; /* Centrare pe verticală */
+    align-items: center; /* Centrare pe orizontală */
+  }
+
+  .home-left {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrare pe orizontală */
+    justify-content: center; /* Centrare pe verticală */
+    text-align: center;
+    padding: 2rem 1rem;
+    max-width: 600px; /* Limităm lățimea maximă pentru un aspect mai plăcut */
+  }
+
+  .home-right {
+    display: none;
+  }
+
+  .publish-button {
+    margin: 2rem auto 0; /* Spațiu mai mare deasupra butonului */
+  }
+
+  .home-left h1 {
+    font-size: 2rem;
+  }
+
+  .home-left p {
+    font-size: 1.1rem;
+  }
+
+  .publish-button {
+    margin: 1.5rem auto;
+    width: 80%;
+    max-width: 250px;
+  }
+
+  .home-right {
+    height: 300px;
+  }
+
+  .art-image {
+    border-radius: 8px;
+  }
+
+  /* Ajustări pentru galerie și paginare */
+  .art-gallery-section {
+    padding: 1rem;
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .pagination-button {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+
+  .home-right {
+    display: none; /* Ascundem complet secțiunea cu imaginea */
+  }
+
+  .home-left {
+    width: 100%;
+    min-height: 80vh; /* Asigurăm că secțiunea stângă ocupă înălțimea viewport-ului */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+}
+
+/* Pentru ecrane foarte mici */
+@media screen and (max-width: 480px) {
+  .home-left h1 {
+    font-size: 1.8rem;
+  }
+
+  .home-left p {
+    font-size: 1rem;
+  }
+
+  .home-right {
+    height: 250px;
+  }
+}

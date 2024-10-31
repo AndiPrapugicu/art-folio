@@ -1,0 +1,742 @@
+.profile-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.profile-sidebar {
+  width: 250px;
+  padding: 2rem 2rem 2rem 0;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border-right: 1px solid black;
+  position: relative;
+}
+
+.profile-name {
+  padding-left: 2rem;
+}
+
+.profile-name h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: left;
+  font-weight: normal;
+}
+
+.profile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-left: 2rem;
+}
+
+.profile-nav a {
+  color: black;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.profile-nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #6c4e31;
+  transition: width 0.3s ease;
+}
+
+.profile-nav a:hover::after {
+  width: 100%;
+}
+
+.profile-social {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 2rem;
+}
+
+.profile-social a {
+  color: #888;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.profile-social a:hover {
+  color: #6c4e31;
+}
+
+.profile-content {
+  flex: 1;
+  padding: 2rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.profile-about {
+  display: flex;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.profile-image-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 2rem;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-image-upload {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #6c4e31;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-image-upload:hover {
+  background-color: #6c4e31;
+}
+
+/* Pentru starea de loading */
+.profile-image-upload[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.profile-bio {
+  flex: 1;
+  max-width: 500px;
+}
+
+.profile-bio h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.profile-bio p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 1.5rem;
+  text-align: justify; /* Aliniere justificată a textului */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial,
+    sans-serif;
+  letter-spacing: 0.2px;
+}
+
+/* Animații */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Media Queries pentru Responsive Design */
+@media (max-width: 1024px) {
+  .profile-container {
+    padding: 1rem;
+  }
+
+  .profile-sidebar {
+    width: 200px;
+    padding: 1.5rem 1rem; /* Ajustat padding */
+  }
+
+  .profile-about {
+    gap: 1.5rem; /* Redus gap-ul */
+  }
+
+  .profile-image-container {
+    flex: 0 0 300px;
+  }
+
+  .profile-name h1 {
+    font-size: 1.8rem;
+  }
+
+  .profile-bio h2 {
+    font-size: 1.8rem;
+  }
+
+  .profile-nav a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    flex-direction: column;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Previne scroll-ul orizontal */
+  }
+
+  .profile-sidebar {
+    width: 100%;
+    padding: 1rem;
+    border-right: none;
+    border-bottom: 1px solid black;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; /* Adăugat pentru a menține sidebar-ul vizibil */
+    top: 0;
+    z-index: 100;
+    /* background: white; */
+  }
+
+  .profile-name {
+    padding-left: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .profile-name h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .profile-nav {
+    padding-left: 0;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 0.5rem; /* Redus gap-ul */
+  }
+
+  .profile-nav a {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.95rem;
+    white-space: nowrap; /* Previne wrapping-ul textului */
+  }
+
+  .profile-social {
+    padding-left: 0;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .profile-content {
+    padding: 1rem;
+  }
+
+  .profile-about {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .profile-image-container {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 500px; /* Limitează lățimea maximă a imaginii */
+    margin: 0 auto;
+    height: auto; /* Permite redimensionarea responsivă */
+    aspect-ratio: 1; /* Menține forma pătrată */
+  }
+
+  .profile-image {
+    width: 100%;
+    height: auto;
+    max-height: 500px; /* Limitează înălțimea maximă */
+    object-fit: cover;
+  }
+
+  .profile-bio {
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  .profile-bio h2 {
+    font-size: 1.5rem;
+  }
+
+  .profile-image-upload {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 670px) {
+  .profile-container {
+    min-height: auto;
+  }
+
+  .profile-about {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .profile-image-container {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .profile-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+  }
+
+  .profile-bio {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+
+  .profile-content {
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .profile-nav {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .profile-social {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-image-container {
+    max-width: 100%;
+  }
+
+  .profile-nav a {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .profile-bio h2 {
+    font-size: 1.3rem;
+  }
+
+  .profile-bio p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .profile-sidebar {
+    padding: 0.8rem; /* Redus padding-ul */
+  }
+
+  .profile-name h1 {
+    font-size: 1.3rem; /* Redus mărimea fontului */
+  }
+
+  .profile-nav {
+    overflow-x: auto; /* Permite scroll orizontal pentru meniuri lungi */
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+  }
+
+  .bio-actions {
+    flex-direction: column; /* Stivuiește butoanele pe mobil */
+    width: 100%;
+  }
+
+  .save-bio-btn,
+  .cancel-bio-btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.bio-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.edit-bio-btn {
+  padding: 0.6rem 1.2rem;
+  background-color: transparent;
+  color: #666;
+  border: 1px solid #666;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.edit-bio-btn:hover {
+  background-color: #6c4e31;
+  color: white;
+}
+
+.bio-edit-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bio-textarea {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #444;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  min-height: 200px;
+  margin-bottom: 1rem;
+  text-align: justify;
+  letter-spacing: 0.2px;
+}
+
+.bio-textarea:focus {
+  outline: none;
+  border-color: #6c4e31;
+  box-shadow: 0 0 0 2px rgba(240, 165, 0, 0.1);
+}
+
+.bio-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.save-bio-btn,
+.cancel-bio-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.save-bio-btn {
+  background-color: #6c4e31;
+  color: white;
+}
+
+.save-bio-btn:hover {
+  background-color: #6c4e31;
+}
+
+.cancel-bio-btn {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.cancel-bio-btn:hover {
+  background-color: #d0d0d0;
+}
+
+.save-bio-btn:disabled,
+.cancel-bio-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.profile-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.profile-section h3 {
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.press-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.press-list li {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 0.8rem;
+  transition: color 0.3s ease;
+}
+
+.press-list li:hover {
+  color: #333;
+}
+
+.exhibitions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.exhibitions-list li {
+  margin-bottom: 1.5rem;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+.year {
+  font-weight: 500;
+  color: #666;
+}
+
+.exhibition-title {
+  font-style: italic;
+  color: #333;
+}
+
+.venue {
+  color: #666;
+  margin-left: 80px;
+  grid-column: 2;
+}
+
+.location {
+  color: #888;
+  margin-left: 80px;
+  grid-column: 2;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .profile-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
+
+  .profile-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .exhibitions-list li {
+    grid-template-columns: 60px 1fr;
+    gap: 0.8rem;
+  }
+
+  .venue,
+  .location {
+    margin-left: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .exhibitions-list li {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+
+  .venue,
+  .location {
+    margin-left: 0;
+    grid-column: 1;
+  }
+}
+
+.profile-website {
+  margin-top: 2rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid #eee;
+}
+
+.website-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.website-header h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 0;
+}
+
+.edit-website-btn {
+  padding: 0.4rem 1rem;
+  background-color: transparent;
+  color: #666;
+  border: 1px solid #666;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.edit-website-btn:hover {
+  background-color: #6c4e31;
+  color: white;
+}
+
+.website-edit-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.website-input {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #333;
+}
+
+.website-input:focus {
+  outline: none;
+  border-color: #666;
+  box-shadow: 0 0 0 2px rgba(102, 102, 102, 0.1);
+}
+
+.website-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.save-website-btn,
+.cancel-website-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.save-website-btn {
+  /* background-color: transparent; */
+  color: white;
+  border: none;
+}
+
+.save-website-btn:hover {
+  background-color: #6c4e31;
+}
+
+.cancel-website-btn {
+  background-color: #eee;
+  color: #666;
+  border: none;
+}
+
+.cancel-website-btn:hover {
+  background-color: #ddd;
+}
+
+.website-link {
+  color: #6c4e31;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.website-link:hover {
+  color: #633d19;
+  text-decoration: underline;
+}
+
+.website-placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* Adăugat pentru tablete în mod portret */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .profile-about {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-image-container {
+    max-width: 300px;
+    margin: 0 auto 2rem;
+  }
+}
+
+/* Mutăm animația într-o clasă separată */
+.animate-sidebar {
+  animation: slideInLeft 0.5s ease-out;
+}
+
+@media (max-width: 768px) {
+  .profile-sidebar {
+    width: 100%;
+    padding: 1rem;
+    border-right: none;
+    border-bottom: 1px solid black;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .animate-sidebar {
+    animation: none; /* Opțional: putem dezactiva animația pe mobile */
+  }
+}
