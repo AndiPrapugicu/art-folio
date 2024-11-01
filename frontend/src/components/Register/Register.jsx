@@ -1,6 +1,4 @@
-// src/components/Register.jsx
 import { Link } from "react-router-dom";
-// import { Input, Button } from "../common";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import { useRegister } from "../../utils/useRegister";

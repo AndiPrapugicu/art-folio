@@ -63,7 +63,6 @@ const ArtworkDetails = ({ openModal }) => {
           <p className="artwork-description">{artwork.description}</p>
           <p className="artwork-date">Posted on: {artwork.datePosted}</p>
           <p className="artwork-artist">Artist: {artwork.artist}</p>
-          <p className="artwork-concept">Concept: {artwork.concept}</p>
         </div>
       </div>
     </div>
