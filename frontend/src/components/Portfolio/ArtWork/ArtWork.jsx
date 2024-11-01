@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
-import { getArtworks } from "../../../apiService"; // Funcția API centralizată
+import { getArtworks } from "../../../apiService";
 import "./ArtWork.css";
+import { getImageUrl } from "../../../utils/imageUtils";
 
 const ArtworkDetails = ({ openModal }) => {
   const { id } = useParams();
@@ -13,10 +14,10 @@ const ArtworkDetails = ({ openModal }) => {
   useEffect(() => {
     const fetchArtworkDetails = async () => {
       try {
-        const artworks = await getArtworks(); // Obține toate lucrările de artă
+        const artworks = await getArtworks();
         const foundArtwork = artworks.find(
           (artwork) => artwork.id === parseInt(id)
-        ); // Găsește lucrarea specifică după ID
+        );
 
         if (foundArtwork) {
           setArtwork(foundArtwork);
@@ -50,7 +51,7 @@ const ArtworkDetails = ({ openModal }) => {
     <div className="artwork-details">
       <div className="artwork-image-container">
         <img
-          src={artwork.imageUrl}
+          src={getImageUrl(artwork.imageUrl, "artworks")}
           alt={artwork.title}
           className="artwork-image"
           onClick={() => openModal(artwork)}

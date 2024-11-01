@@ -7,6 +7,7 @@
 .shop-container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 2rem;
 }
 
 .shop-header {
@@ -19,16 +20,23 @@
 .shop-header h2 {
   font-family: "Playfair Display", serif;
   font-size: 2rem;
-  color: #333;
+  margin: 0;
+  font-weight: normal;
+}
+
+.add-product-button {
+  width: auto;
+  min-width: 150px;
 }
 
 .add-product-btn {
-  padding: 0.8rem 1.5rem;
+  padding: 0.6rem 1.2rem;
   background-color: #6c4e31;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 0.9rem;
   transition: background-color 0.3s ease;
 }
 
@@ -75,12 +83,14 @@
 }
 
 .buy-btn {
-  width: 100%;
-  padding: 1rem;
+  flex: 1;
+  padding: 0.6rem 1rem;
   background-color: #6c4e31;
   color: white;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
+  font-size: 0.9rem;
   transition: background-color 0.3s ease;
 }
 
@@ -153,15 +163,15 @@
 
 .form-actions {
   display: flex;
-  gap: 1rem;
-  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 1rem;
 }
 
 .form-actions button {
-  padding: 0.8rem 1.5rem;
+  padding: 0.6rem 1.2rem;
   border-radius: 4px;
-  cursor: pointer;
   font-size: 0.9rem;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
@@ -172,21 +182,17 @@
 }
 
 .form-actions button[type="button"] {
-  background-color: #eee;
-  color: #666;
+  background-color: #e9ecef;
+  color: #495057;
   border: none;
 }
 
-.form-actions button[type="submit"]:hover {
-  background-color: #5a3f26;
-}
-
-.form-actions button[type="button"]:hover {
-  background-color: #ddd;
+.form-actions button:hover {
+  opacity: 0.9;
 }
 
 .form-actions button:disabled {
-  opacity: 0.7;
+  opacity: 0.6;
   cursor: not-allowed;
 }
 
@@ -203,19 +209,19 @@
 
 .product-actions {
   display: flex;
-  gap: 10px;
-  justify-content: space-between;
-  margin-top: 10px;
+  gap: 0.5rem;
+  padding: 1rem;
 }
 
 .delete-btn {
+  padding: 0.6rem 1rem;
   background-color: #dc3545;
   color: white;
   border: none;
-  padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
 }
 
 .delete-btn:hover {
@@ -229,4 +235,56 @@
 
 .buy-btn {
   flex: 1;
+}
+
+/* Stilizare pentru containerul de butoane */
+.product-actions {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+/* Stilizare specifică pentru butoanele din product-actions */
+.product-actions .btn {
+  height: 36px; /* Înălțime fixă pentru toate butoanele */
+  padding: 0 1rem;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Stilizare pentru butonul Buy Now */
+.product-actions .btn.buy-btn {
+  flex: 1;
+  background-color: #6c4e31;
+  color: white;
+}
+
+/* Stilizare pentru butonul Delete */
+.product-actions .btn.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  min-width: 80px; /* Lățime minimă pentru butonul de ștergere */
+}
+
+/* Hover states */
+.product-actions .btn.buy-btn:hover {
+  background-color: #5a3f26;
+}
+
+.product-actions .btn.delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Stilizare pentru butonul Add New Product */
+.shop-header .btn.add-product-btn {
+  height: 36px;
+  padding: 0 1.2rem;
+  background-color: #6c4e31;
+  color: white;
+}
+
+.shop-header .btn.add-product-btn:hover {
+  background-color: #5a3f26;
 }

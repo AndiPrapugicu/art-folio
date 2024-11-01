@@ -7,8 +7,6 @@ import { useAuth } from "../../contexts/AuthContext";
 const Header = () => {
   const { isLoggedIn, user, logout } = useAuth();
 
-  console.log("Header user data:", user);
-
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const location = useLocation();

@@ -1,5 +1,5 @@
-import PropTypes from "prop-types"; // Importă PropTypes
-import "./Modal.css"; // Asigură-te că ai un fișier CSS pentru stilurile modalului
+import PropTypes from "prop-types";
+import "./Modal.css";
 
 const Modal = ({ isOpen, onClose, imageUrl = "", title = "" }) => {
   if (!isOpen) return null;

@@ -1,101 +1,78 @@
 // src/components/Register.jsx
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axiosInstance from "../../utils/axiosConfig";
+import { Link } from "react-router-dom";
+// import { Input, Button } from "../common";
+import Input from "../Input/Input";
+import Button from "../Button/Button";
+import { useRegister } from "../../utils/useRegister";
 import "./Register.css";
 
 const Register = () => {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    username: "",
-  });
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setIsLoading(true);
-
-    try {
-      console.log(
-        "📝 [Register] Încercare înregistrare pentru:",
-        formData.email
-      );
-
-      const response = await axiosInstance.post("/api/auth/register", formData);
-      console.log("✅ [Register] Înregistrare reușită:", response.data);
-
-      // Redirecționăm către login
-      navigate("/login");
-    } catch (error) {
-      console.error("❌ [Register] Eroare la înregistrare:", error);
-      setError(error.response?.data?.message || "Eroare la înregistrare");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const { formData, error, isLoading, handleSubmit, handleChange } =
+    useRegister();
+  const isFormValid = formData.email && formData.password && formData.username;
 
   return (
     <div className="register-container">
-      <h2>Înregistrare</h2>
-      {error && <div className="error-message">{error}</div>}
+      <form onSubmit={handleSubmit} className="register-form" noValidate>
+        <h2>Înregistrare</h2>
 
-      <form onSubmit={handleSubmit} className="register-form">
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            disabled={isLoading}
-          />
-        </div>
+        {error && <div className="error-message">{error}</div>}
 
-        <div className="form-group">
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-            disabled={isLoading}
-          />
-        </div>
+        <Input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          label="Email"
+          required
+          disabled={isLoading}
+          autoComplete="email"
+          placeholder="Introduceți adresa de email"
+          error={error && !formData.email && "Câmpul este obligatoriu"}
+        />
 
-        <div className="form-group">
-          <label htmlFor="password">Parolă:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-            disabled={isLoading}
-          />
-        </div>
+        <Input
+          type="text"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          label="Username"
+          required
+          disabled={isLoading}
+          autoComplete="username"
+          placeholder="Alegeți un nume de utilizator"
+          error={error && !formData.username && "Câmpul este obligatoriu"}
+        />
 
-        <button type="submit" className="register-button" disabled={isLoading}>
+        <Input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          label="Parolă"
+          required
+          disabled={isLoading}
+          autoComplete="new-password"
+          placeholder="Alegeți o parolă"
+          error={error && !formData.password && "Câmpul este obligatoriu"}
+        />
+
+        <Button
+          type="submit"
+          variant="primary"
+          size="large"
+          disabled={isLoading || !isFormValid}
+          isLoading={isLoading}
+          fullWidth
+        >
           {isLoading ? "Se procesează..." : "Înregistrare"}
-        </button>
+        </Button>
 
         <div className="login-link">
-          Ai deja cont? <a href="/login">Autentifică-te aici</a>
+          Ai deja cont?{" "}
+          <Link to="/login" className="login-link-button">
+            Autentifică-te aici
+          </Link>
         </div>
       </form>
     </div>

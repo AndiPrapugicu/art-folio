@@ -21,29 +21,27 @@ export const AuthProvider = ({ children }) => {
 
       if (token) {
         try {
-          // Setăm token-ul în axiosInstance
           axiosInstance.defaults.headers.common[
             "Authorization"
           ] = `Bearer ${token}`;
-
-          // Obținem datele actualizate ale utilizatorului
           const response = await axiosInstance.get("/auth/current");
-
           if (response.data) {
-            // Salvăm datele complete ale utilizatorului
+            console.log("Date utilizator primite de la server:", response.data);
             setUser(response.data);
             setIsLoggedIn(true);
-
-            // Actualizăm și în localStorage
             localStorage.setItem("user", JSON.stringify(response.data));
           }
         } catch (error) {
-          console.error("Eroare la încărcarea datelor utilizatorului:", error);
+          console.error("Eroare la verificarea autentificării:", error);
           localStorage.removeItem("token");
           localStorage.removeItem("user");
+          delete axiosInstance.defaults.headers.common["Authorization"];
           setUser(null);
           setIsLoggedIn(false);
         }
+      } else {
+        setUser(null);
+        setIsLoggedIn(false);
       }
       setIsLoading(false);
     };
@@ -51,30 +49,22 @@ export const AuthProvider = ({ children }) => {
     checkAuth();
   }, []);
 
-  const updateUser = useCallback(
-    async (newUserData) => {
-      try {
-        // Combinăm datele existente cu cele noi
-        const updatedUser = {
-          ...user,
-          ...newUserData,
-        };
+  const updateUser = useCallback((userData) => {
+    console.log("Actualizare date utilizator:", userData);
+    setUser(userData);
+    setIsLoggedIn(true);
+    localStorage.setItem("user", JSON.stringify(userData));
 
-        setUser(updatedUser);
-        localStorage.setItem("user", JSON.stringify(updatedUser));
+    const savedUser = localStorage.getItem("user");
+    console.log("Date salvate în localStorage:", JSON.parse(savedUser));
+  }, []);
 
-        // Opțional: Sincronizăm cu serverul
-        const response = await axiosInstance.get("/auth/current");
-        if (response.data) {
-          setUser(response.data);
-          localStorage.setItem("user", JSON.stringify(response.data));
-        }
-      } catch (error) {
-        console.error("Eroare la actualizarea utilizatorului:", error);
-      }
-    },
-    [user]
-  );
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
 
   const login = async (credentials) => {
     console.log("🚀 [AuthContext] Starting login process", {

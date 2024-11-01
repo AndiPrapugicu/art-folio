@@ -1,5 +1,3 @@
-/* PortfolioDetail.css */
-
 .portfolio-detail {
   text-align: center;
   padding: 2rem;
@@ -361,12 +359,9 @@
 
 .portfolio-slider-container {
   width: 100%;
-  position: relative;
-}
-
-.slider-wrapper {
-  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .portfolio-slide {
@@ -374,22 +369,43 @@
   box-sizing: border-box;
 }
 
-.portfolio-item {
+.portfolio-image-container {
   width: 100%;
-  height: 100%;
-  background: white;
-  border-radius: 8px;
+  max-width: 400px;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 10px;
   overflow: hidden;
+  aspect-ratio: 1;
 }
 
 .portfolio-images {
   width: 100%;
-  height: 500px;
+  height: 100%;
   object-fit: cover;
 }
 
-.portfolio-details {
-  padding: 1.5rem;
+/* Media queries */
+@media (max-width: 1200px) {
+  .portfolio-image-container {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-image-container {
+    max-width: 300px;
+  }
+
+  .portfolio-slider-container {
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-image-container {
+    max-width: 280px;
+  }
 }
 
 /* Customizare săgeți slider */
@@ -1693,4 +1709,37 @@ input[type="date"]::-webkit-clear-button {
     padding: 6px 10px;
     font-size: 0.8rem;
   }
+}
+
+/* Eliminăm sau modificăm stilurile pentru upload-status-success */
+.upload-status-success {
+  display: none; /* Sau putem folosi visibility: hidden; */
+}
+
+/* Sau dacă vrem să păstrăm doar mesajul dar să eliminăm bara */
+.upload-status-success {
+  background: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* Eliminăm complet elementul și toate stilurile sale */
+.upload-status-success,
+div[class*="upload-status"] {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  overflow: hidden !important;
+}
+
+/* Eliminăm și spațiul care ar putea fi creat de container */
+.portfolio-slider-container {
+  margin-top: 10px !important;
+  padding-top: 0 !important;
 }

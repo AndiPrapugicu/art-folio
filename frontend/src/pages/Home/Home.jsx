@@ -4,20 +4,24 @@ import artImage from "../../components/UI/ImageGallery/images/arta.jpg";
 import UserArtGallery from "../../components/Portfolio/UserArtGallery";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { getImageUrl } from "../../utils/imageUtils";
 
 const Home = () => {
   const [artworks, setArtworks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const itemsPerPage = 9; // Numărul de artworks per pagină
+  const itemsPerPage = 9;
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchArtworks = async () => {
       try {
         const response = await axios.get("http://localhost:3000/api/artworks");
-        setArtworks(response.data);
-        // Calculăm numărul total de pagini
+        const processedArtworks = response.data.map((artwork) => ({
+          ...artwork,
+          imageUrl: getImageUrl(artwork.imageUrl),
+        }));
+        setArtworks(processedArtworks);
         setTotalPages(Math.ceil(response.data.length / itemsPerPage));
       } catch (error) {
         console.error("Error fetching artworks:", error);
@@ -27,7 +31,6 @@ const Home = () => {
     fetchArtworks();
   }, []);
 
-  // Calculăm artworks pentru pagina curentă
   const getCurrentPageArtworks = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -40,7 +43,6 @@ const Home = () => {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-    // Opțional: scroll la începutul galeriei
     document
       .querySelector(".art-gallery-section")
       ?.scrollIntoView({ behavior: "smooth" });

@@ -1,78 +1,12 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
+import { Link } from "react-router-dom";
+import Input from "../Input/Input";
+import Button from "../Button/Button";
+import { useLogin } from "../../utils/useLogin";
 import "./Login.css";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const { login } = useAuth();
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log("🚀 [Login] Început proces autentificare");
-
-    setError("");
-    setIsLoading(true);
-
-    try {
-      console.log("📝 [Login] Date formular:", {
-        email: formData.email,
-        passwordLength: formData.password.length,
-        hasLoginFunction: !!login,
-      });
-
-      if (!formData.email || !formData.password) {
-        throw new Error("Vă rugăm să completați toate câmpurile");
-      }
-
-      console.log("🔄 [Login] Apelare funcție login");
-      const result = await login(formData);
-
-      console.log("✅ [Login] Răspuns autentificare:", {
-        success: !!result,
-        hasToken: !!result?.token,
-        hasUser: !!result?.user,
-      });
-
-      if (!result || !result.token || !result.user) {
-        throw new Error("Răspuns invalid de la server");
-      }
-
-      console.log("🚗 [Login] Navigare către portfolio");
-      navigate("/portfolio");
-    } catch (error) {
-      console.error("❌ [Login] Eroare la autentificare:", {
-        message: error.message,
-        response: error.response?.data,
-        status: error.response?.status,
-      });
-
-      setError(
-        error.response?.data?.message ||
-          error.message ||
-          "A apărut o eroare la autentificare. Vă rugăm să încercați din nou."
-      );
-    } finally {
-      console.log("🏁 [Login] Finalizare proces autentificare");
-      setIsLoading(false);
-    }
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    console.log("✏️ [Login] Actualizare câmp:", name);
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  const { formData, error, isLoading, handleSubmit, handleChange } = useLogin();
+  const isFormValid = formData.email && formData.password;
 
   return (
     <div className="login-container">
@@ -82,43 +16,48 @@ const Login = () => {
         {error && <div className="error-message">{error}</div>}
 
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
+          <Input
             type="email"
-            id="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
+            label="Email"
             required
             disabled={isLoading}
             autoComplete="email"
+            placeholder="Introduceți adresa de email"
+            error={error && !formData.email && "Câmpul este obligatoriu"}
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
+          <Input
             type="password"
-            id="password"
             name="password"
             value={formData.password}
             onChange={handleChange}
+            label="Password"
             required
             disabled={isLoading}
             autoComplete="current-password"
+            placeholder="Introduceți parola"
+            error={error && !formData.password && "Câmpul este obligatoriu"}
           />
         </div>
 
-        <button
+        <Button
           type="submit"
-          className="login-button"
-          disabled={isLoading || !formData.email || !formData.password}
+          variant="primary"
+          size="large"
+          disabled={isLoading || !isFormValid}
+          isLoading={isLoading}
+          fullWidth
         >
           {isLoading ? "Se procesează..." : "Autentificare"}
-        </button>
+        </Button>
 
-        <div className="register-link">
-          Nu aveți cont? <a href="/register">Înregistrați-vă aici</a>
+        <div className="register-prompt">
+          Nu aveți cont? <Link to="/register">Înregistrați-vă aici</Link>
         </div>
       </form>
     </div>

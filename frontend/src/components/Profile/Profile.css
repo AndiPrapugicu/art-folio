@@ -639,14 +639,14 @@
   gap: 1rem;
 }
 
-.website-input {
+/* .website-input {
   width: 100%;
   padding: 0.8rem;
   font-size: 1rem;
   border: 1px solid #ddd;
   border-radius: 4px;
   color: #333;
-}
+} */
 
 .website-input:focus {
   outline: none;

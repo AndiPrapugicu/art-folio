@@ -1,0 +1,376 @@
+.portfolio-slider-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 60px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.portfolio-slide {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.slick-slide {
+  height: inherit !important;
+  > div {
+    height: 100%;
+  }
+}
+
+.slick-list {
+  margin: 0 -10px;
+}
+
+.portfolio-objects {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.portfolio-image-container {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+}
+
+.portfolio-images {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.hidden-artwork {
+  opacity: 0.5;
+  filter: grayscale(50%);
+}
+
+.portfolio-details {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 0 0 10px 10px;
+}
+
+.portfolio-item-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 10px 0;
+}
+
+.portfolio-item-description {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.portfolio-item-metadata {
+  color: #888;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Stiluri pentru săgeți */
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: #6c4e31;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.custom-arrow.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.5;
+  visibility: hidden; /* Ascunde săgeata când e disabled */
+}
+
+.custom-prev-arrow {
+  left: -50px;
+}
+
+.custom-next-arrow {
+  right: -50px;
+}
+
+.arrow-icon {
+  width: 10px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  padding: 3px;
+}
+
+.custom-prev-arrow .arrow-icon {
+  transform: rotate(135deg);
+}
+
+.custom-next-arrow .arrow-icon {
+  transform: rotate(-45deg);
+}
+
+/* Container pentru slider */
+.portfolio-slider-container {
+  padding: 0 60px;
+  position: relative;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Ascunde săgețile default ale slick-slider */
+.slick-prev,
+.slick-next {
+  display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .portfolio-slider-container {
+    padding: 1rem;
+  }
+
+  .custom-prev-arrow {
+    left: -30px;
+  }
+
+  .custom-next-arrow {
+    right: -30px;
+  }
+
+  .portfolio-images {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-arrow {
+    width: 35px;
+    height: 35px;
+  }
+
+  .custom-prev-arrow {
+    left: 10px;
+  }
+
+  .custom-next-arrow {
+    right: 10px;
+  }
+
+  .portfolio-images {
+    height: 350px;
+  }
+
+  .portfolio-image-container {
+    height: 300px;
+  }
+
+  .portfolio-details {
+    padding: 15px;
+  }
+
+  .portfolio-slider-container {
+    padding: 0 30px;
+  }
+
+  .custom-prev-arrow {
+    left: -30px;
+  }
+
+  .custom-next-arrow {
+    right: -30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-slide {
+    padding: 0;
+  }
+
+  .portfolio-images {
+    height: 300px;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slick-track {
+  display: flex !important;
+}
+
+.slick-slider {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+input[type="date"]:invalid {
+  border-color: #ff4444;
+}
+
+input[type="date"]:invalid:focus {
+  outline-color: #ff4444;
+}
+
+/* Stilizare pentru icon-ul de calendar */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  background-color: rgba(102, 75, 50, 0.1); /* culoare maro transparentă */
+}
+
+/* Pentru Firefox */
+input[type="date"]::-moz-calendar-picker-indicator {
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+input[type="date"]::-moz-calendar-picker-indicator:hover {
+  background-color: rgba(102, 75, 50, 0.1);
+}
+
+/* Opțional: poți și să personalizezi icon-ul cu o imagine proprie */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Stiluri pentru butoane de acțiune */
+.artwork-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.portfolio-image-container:hover .artwork-actions {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hide-button,
+.delete-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 101;
+}
+
+.hide-button {
+  color: #6c4e31;
+}
+
+.delete-button {
+  background: rgba(255, 255, 255, 0.9);
+  color: #dc3545;
+}
+
+.hide-button:hover,
+.delete-button:hover {
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.delete-button:hover {
+  background: #dc3545;
+  color: white;
+}
+
+/* Stiluri pentru detalii */
+.portfolio-details {
+  padding: 20px;
+}
+
+.portfolio-item-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 10px 0;
+}
+
+.portfolio-item-description {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.portfolio-item-metadata {
+  color: #888;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Stiluri pentru artwork ascuns */
+.portfolio-images.hidden {
+  opacity: 0.5;
+  filter: grayscale(50%);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .portfolio-slider-container {
+    padding: 0 30px;
+  }
+
+  .portfolio-image-container {
+    height: 300px;
+  }
+
+  .artwork-actions {
+    opacity: 1;
+    transform: none;
+    top: auto;
+    bottom: 10px;
+  }
+
+  .hide-button,
+  .delete-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}

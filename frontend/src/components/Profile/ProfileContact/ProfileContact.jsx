@@ -59,19 +59,42 @@ const ProfileContact = () => {
 
     setIsSavingContact(true);
     try {
-      const response = await axiosInstance.patch("/auth/update-contact", {
+      const response = await axiosInstance.post("/auth/update-contact", {
         email,
         phone,
         contactMessage,
       });
 
+      console.log("Response from server:", response.data); // Pentru debugging
+
       if (response.data?.success) {
-        updateUser({
-          ...user,
-          email,
-          phone,
-          contactMessage,
-        });
+        // Actualizăm token-ul
+        if (response.data.token) {
+          localStorage.setItem("token", response.data.token);
+          axiosInstance.defaults.headers.common[
+            "Authorization"
+          ] = `Bearer ${response.data.token}`;
+        }
+
+        // Folosim direct obiectul user returnat de server
+        const serverUser = response.data.user;
+
+        // Ne asigurăm că toate proprietățile sunt prezente
+        const updatedUser = {
+          ...user, // păstrăm proprietățile existente
+          ...serverUser, // suprascriem cu datele noi de la server
+          email: serverUser.email,
+          phone: serverUser.phone,
+          contactMessage: serverUser.contactMessage,
+          profileImage: serverUser.profileImage,
+          website: serverUser.website,
+          username: serverUser.username,
+          bio: serverUser.bio,
+        };
+
+        console.log("Updating user with:", updatedUser); // Pentru debugging
+
+        updateUser(updatedUser);
         setIsEditingContact(false);
         alert("Informațiile de contact au fost actualizate cu succes!");
       }

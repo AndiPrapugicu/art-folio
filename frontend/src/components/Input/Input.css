@@ -1,0 +1,142 @@
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.input-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4a5568;
+}
+
+.input-required {
+  color: #e53e3e;
+  margin-left: 0.25rem;
+}
+
+.input-field-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-component {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 0.875rem;
+  color: #2d3748;
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+}
+
+/* Sizes */
+.input-small {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+}
+
+.input-medium {
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+}
+
+.input-large {
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+}
+
+/* Variants */
+.input-default {
+  border: 1px solid #e2e8f0;
+}
+
+.input-outline {
+  border: 2px solid #4a5568;
+  background-color: transparent;
+}
+
+.input-filled {
+  border: 1px solid transparent;
+  background-color: #f7fafc;
+}
+
+/* States */
+.input-component:focus {
+  outline: none;
+  border-color: #4a5568;
+  box-shadow: 0 0 0 3px rgba(74, 85, 104, 0.2);
+}
+
+.input-component:disabled {
+  background-color: #f7fafc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.input-component::placeholder {
+  color: #a0aec0;
+}
+
+/* Error state */
+.input-error {
+  border-color: #e53e3e;
+}
+
+.input-error:focus {
+  border-color: #e53e3e;
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.2);
+}
+
+.input-error-message {
+  font-size: 0.75rem;
+  color: #e53e3e;
+  margin-top: 0.25rem;
+}
+
+/* Icon */
+.input-with-icon {
+  padding-right: 2.5rem;
+}
+
+.input-icon {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #4a5568;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Counter */
+.input-counter {
+  font-size: 0.75rem;
+  color: #718096;
+  text-align: right;
+  margin-top: 0.25rem;
+}
+
+/* File input specific */
+.input-component[type="file"] {
+  padding: 0.375rem;
+}
+
+.input-component[type="file"]::file-selector-button {
+  padding: 0.375rem 0.75rem;
+  margin-right: 0.75rem;
+  border-radius: 0.25rem;
+  border: none;
+  background-color: #4a5568;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.input-component[type="file"]::file-selector-button:hover {
+  background-color: #2d3748;
+}
