@@ -28,6 +28,10 @@ A modern web application designed for digital artists to showcase their artwork,
 - JWT Authentication
 - Sharp for image processing
 
+## Loging in
+Use the account: admin@email.com| pass: admin123
+Or create your own account using Register.
+
 ## Getting Started
 
 ### Installation
