@@ -23,7 +23,7 @@ async function bootstrap() {
 
   // Definirea directoarelor pentru upload-uri
   const uploadsConfig = {
-    root: join(__dirname, '..', 'uploads'),
+    root: join(process.cwd(), 'uploads'), // Modificat din __dirname, '..' în process.cwd()
     directories: ['profiles', 'products', 'artworks'],
   };
 

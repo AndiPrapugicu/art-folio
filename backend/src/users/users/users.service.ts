@@ -236,7 +236,6 @@ export class UsersService {
         token,
       };
     } catch (error) {
-      console.error('Error updating bio:', error);
       throw error;
     }
   }
@@ -260,8 +259,6 @@ export class UsersService {
     if (!user) {
       throw new NotFoundException('User not found');
     }
-
-    // Actualizăm doar câmpurile care sunt prezente în DTO
     if (updateContactDto.email !== undefined) {
       const emailExists = await this.usersRepository.findOne({
         where: {
@@ -327,19 +324,13 @@ export class UsersService {
 
   async refreshToken(refreshToken: string) {
     try {
-      // Verificăm și decodăm refresh token-ul
       const payload = await this.jwtService.verify(refreshToken);
-
-      // Găsim utilizatorul
       const user = await this.usersRepository.findOne({
         where: { id: payload.sub },
       });
-
       if (!user) {
         throw new UnauthorizedException('Utilizator negăsit');
       }
-
-      // Generăm un nou token de acces
       const newAccessToken = this.jwtService.sign({
         sub: user.id,
         email: user.email,

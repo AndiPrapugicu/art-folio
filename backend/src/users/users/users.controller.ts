@@ -118,9 +118,8 @@ export class AuthController {
 
   @Get('current')
   @UseGuards(JwtAuthGuard)
-  getCurrentUser(@Req() req: RequestWithUser) {
+  async getCurrentUser(@Req() req: RequestWithUser) {
     console.log('Current user data:', req.user);
-
     return {
       id: req.user.sub,
       email: req.user.email,
@@ -148,7 +147,7 @@ export class AuthController {
     }
   }
 
-  @Post('profile-image')
+  @Patch('profile-image')
   @UseGuards(JwtAuthGuard)
   @UseInterceptors(
     FileInterceptor('image', {
@@ -231,12 +230,19 @@ export class AuthController {
     @Body() updateBioDto: UpdateBioDto,
   ) {
     try {
+      console.log('Updating bio for user:', req.user.sub);
+      console.log('New bio:', updateBioDto.bio);
+
       const result = await this.usersService.updateBio(
         req.user.sub,
         updateBioDto.bio,
       );
+
+      console.log('Update result:', result);
+
       return result;
     } catch (error) {
+      console.error('Error in updateBio:', error);
       throw new HttpException(
         error.message || 'Error updating bio',
         error.status || HttpStatus.INTERNAL_SERVER_ERROR,
@@ -268,7 +274,7 @@ export class AuthController {
     }
   }
 
-  @Patch('update-contact')
+  @Post('update-contact')
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiOperation({
